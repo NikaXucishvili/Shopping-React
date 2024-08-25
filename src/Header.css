@@ -1,0 +1,428 @@
+/* Header */
+.header {
+  width: 100%;
+  background: linear-gradient(135deg, #003366, #0066cc);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+  font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+/* Nav and Burger Menu */
+.nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px; /* Increased font size */
+  font-weight: 500; /* Medium weight */
+  transition: color 0.3s; /* Animation for color change */
+}
+
+.nav a:hover {
+  color: #009b8c;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 4px; /* Rounded corners */
+  padding: 5px;
+}
+
+.search-bar input {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #333;
+  margin-left: 5px;
+}
+
+.user-menu-container {
+  position: relative;
+}
+
+.user-menu-button {
+  display: flex;
+  align-items: center;
+  background: #fff; /* White background for button */
+  color: #333; /* Dark text color */
+  border: none; /* Remove default button border */
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500; /* Medium weight */
+  border-radius: 4px; /* Rounded corners */
+  transition: color 0.3s; /* Animation for color change */
+}
+
+.user-menu-button:hover {
+  color: #009b8c; /* Teal color on hover */
+}
+
+.user-icon {
+  font-size: 20px;
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.user-text {
+  margin: 0; /* Ensure no margin */
+}
+
+.user-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: linear-gradient(135deg, #333, #555); /* Match header background gradient */
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  min-width: 150px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+  transition: opacity 0.3s, visibility 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 4px; /* Rounded corners */
+}
+
+.user-menu-container:hover .user-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  z-index: 3;
+}
+
+.user-menu li {
+  margin: 0;
+}
+
+.user-menu button {
+  background: none;
+  margin: 3px;
+  border: 1px solid white;
+  color: #fff; /* Text color matching the header */
+  text-align: left;
+  padding: 10px 15px;
+  font-size: 16px; /* Consistent font size */
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Animation */
+}
+
+.user-menu button:hover {
+  background-color: #009b8c; /* Teal background on hover */
+  color: #fff; /* White text on hover */
+}
+
+.cta-button a {
+  display: block;
+  background: #00bfae; /* Teal background */
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px;
+  font-weight: 500; /* Medium weight */
+  transition: background-color 0.3s, color 0.3s; /* Animation */
+}
+
+.cta-button a:hover {
+  background: #009b8c; /* Darker teal on hover */
+  color: #fff;
+}
+
+.notification-icon {
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.notification-icon:hover {
+  color: #009b8c; /* Teal color on hover */
+}
+
+.burger {
+  display: none; /* Hidden by default, shown on small screens */
+}
+
+.burger-icon {
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.burger-icon:hover {
+  color: #009b8c; /* Teal color on hover */
+}
+
+/* Burger Menu Overlay */
+.burger-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.burger-menu-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.burger-menu-content {
+  background: #333;
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center items horizontally */
+  transform: translateX(-100%); /* Start hidden */
+  transition: transform 0.3s ease; /* Slide in animation */
+}
+
+.burger-menu-overlay.open .burger-menu-content {
+  transform: translateX(0); /* Slide in */
+}
+
+.burger-menu-content a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  margin: 15px 0; /* Added margin between links */
+  padding: 10px 20px; /* Added padding for the border */
+  border: 2px solid #555; /* Border to separate links */
+  border-radius: 4px; /* Rounded corners */
+  transition: color 0.3s, border-color 0.3s;
+  opacity: 0; /* Initially hidden for animation */
+  transform: translateX(-30px); /* Slide in from left */
+  animation: slideIn 0.3s forwards; /* Animation for links */
+}
+
+.burger-menu-content a:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.burger-menu-content a:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.burger-menu-content a:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.burger-menu-content a:hover {
+  color: #009b8c; /* Teal color on hover */
+  border-color: #009b8c; /* Change border color on hover */
+}
+
+.burger-menu-content button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.burger-menu-content button:hover {
+  color: #009b8c; /* Teal color on hover */
+}
+
+/* Cart Sidebar */
+.cart-button {
+  background: none;
+  border: none;
+  position: relative;
+}
+
+.cart-icon {
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0 6px;
+  font-size: 15px;
+}
+
+.cart-sidebar {
+  position: absolute;
+  top: 53px; /* Adjusted from header */
+  right: 20px; /* Align to the right of the viewport */
+  width: 300px; /* Slightly wider */
+  background: #444; /* Darker background */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  padding: 20px;
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  border-radius: 8px; /* Rounded corners */
+}
+
+.cart-sidebar.open {
+  transform: translateX(0);
+}
+
+.cart-sidebar h2 {
+  margin-top: 0;
+  font-size: 22px; /* Larger title */
+  color: #fff;
+}
+
+.cart-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-sidebar li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #666;
+  color: #fff; /* Text color matching the sidebar */
+}
+
+.cart-sidebar img {
+  width: 50px; /* Placeholder image size */
+  height: 50px;
+  object-fit: cover; /* Ensure the image covers the space */
+  border-radius: 4px; /* Rounded corners for image */
+}
+
+.cart-sidebar span {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.cart-sidebar button {
+  background: #e74c3c; /* Red background for delete button */
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.cart-sidebar button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+.cart-close-button {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.cart-close-button:hover {
+  color: #009b8c; /* Teal color on hover */
+}
+
+/* Checkout Button */
+.cart-checkout-button {
+  background: #00bfae; /* Teal background */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+
+.cart-checkout-button:hover {
+  background: #009b8c; /* Darker teal on hover */
+}
+
+
+/* Keyframes for animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .nav {
+    display: none; /* Hide nav links on smaller screens */
+  }
+
+  .burger {
+    display: flex; /* Show burger icon on small screens */
+    align-items: center;
+  }
+
+  .cart-button {
+    display: none; /* Hide cart button in burger menu on small screens */
+  }
+}
